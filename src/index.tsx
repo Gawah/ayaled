@@ -45,6 +45,7 @@ export default definePlugin((serverApi: ServerAPI) => {
     console.log("结束休眠");
     if(intervalId != null){
       clearInterval(intervalId);
+      intervalId=null;
     }
     serverApi!.callPluginMethod("set_ledOn", {"value":ledon});
   });
