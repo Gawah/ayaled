@@ -11,7 +11,7 @@ import { FaShip } from "react-icons/fa";
 
 var ledon=true
 const Content: VFC<{ serverAPI: ServerAPI }> = ({serverAPI}) => {
-  const [ledOn, setledOn] = useState<boolean>(true);
+  const [ledOn, setledOn] = useState<boolean>(ledon);
   return (
     <PanelSection title="设置">
       <PanelSectionRow>

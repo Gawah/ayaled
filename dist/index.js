@@ -210,7 +210,7 @@
 
     var ledon = true;
     const Content = ({ serverAPI }) => {
-        const [ledOn, setledOn] = React.useState(true);
+        const [ledOn, setledOn] = React.useState(ledon);
         return (window.SP_REACT.createElement(PanelSection, { title: "\u8BBE\u7F6E" },
             window.SP_REACT.createElement(PanelSectionRow, null,
                 window.SP_REACT.createElement(ToggleField, { label: "开启灯效", checked: ledOn, onChange: (value) => {
