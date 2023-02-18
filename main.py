@@ -1,22 +1,26 @@
-import logging
+import subprocess
+import asyncio
+import os
+import sys
 
-logging.basicConfig(filename="/tmp/template.log",
-                    format='[Template] %(asctime)s %(levelname)s %(message)s',
-                    filemode='w+',
-                    force=True)
-logger=logging.getLogger()
-logger.setLevel(logging.INFO) # can be changed to logging.DEBUG for debugging issues
+#获取插件路径 加载backend中各个py文件
+try:
+    from helpers import get_homebrew_path,get_home_path,get_user
+    HOMEBREW_PATH = get_homebrew_path(get_home_path(get_user()))   
+    sys.path.append("{}/plugins/ayaled/backend".format(HOMEBREW_PATH))
+    from config import logging
+    logging.info("ayaled main.py")
+except Exception as e:
+    logging.error(e)
 
 class Plugin:
-    # A normal method. It can be called from JavaScript using call_plugin_function("method_1", argument1, argument2)
-    async def add(self, left, right):
-        return left + right
-
-    # Asyncio-compatible long-running code, executed in a task when the plugin is loaded
     async def _main(self):
-        logger.info("Hello World!")
-    
-    # Function called first during the unload process, utilize this to handle your plugin being removed
-    async def _unload(self):
-        logger.info("Goodbye World!")
-        pass
+        while True:
+            await asyncio.sleep(3)
+
+    def set_lightOff(self, value: bool):
+        try:
+            logging.info("set_lightOff")
+        except Exception as e:
+            logging.error(e)
+            return False
