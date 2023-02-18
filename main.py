@@ -16,12 +16,12 @@ except Exception as e:
 
 class Plugin:
     async def _main(self):
+        AyaLed.enable_Control()
         while True:
             await asyncio.sleep(3)
 
     def set_ledOn(self, value: bool):
         try:
-            AyaLed.enable_Control()
             AyaLed.set_all_pixels(Color(value*255,value*255,value*255))
             logging.info(f"set_ledOn:{value}")
         except Exception as e:
