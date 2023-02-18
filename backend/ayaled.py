@@ -3,6 +3,7 @@ import time
 class Joystick:
     Left = 1
     Right = 2
+    ALL = 3
 
 class LedPosition: 
     Right = 1
@@ -19,15 +20,15 @@ class Color():
 class AyaLed():
     @staticmethod
     def set_all_pixels(color:Color):
-        AyaLed.set_pixel(Joystick.Left, LedPosition.Right, color)
-        AyaLed.set_pixel(Joystick.Left, LedPosition.Bottom, color)
-        AyaLed.set_pixel(Joystick.Left, LedPosition.Left, color)
-        AyaLed.set_pixel(Joystick.Left, LedPosition.Top, color)
+        AyaLed.set_pixel(Joystick.ALL, LedPosition.Right, color)
+        AyaLed.set_pixel(Joystick.ALL, LedPosition.Bottom, color)
+        AyaLed.set_pixel(Joystick.ALL, LedPosition.Left, color)
+        AyaLed.set_pixel(Joystick.ALL, LedPosition.Top, color)
     
-        AyaLed.set_pixel(Joystick.Right, LedPosition.Right, color)
-        AyaLed.set_pixel(Joystick.Right, LedPosition.Bottom, color)
-        AyaLed.set_pixel(Joystick.Right, LedPosition.Left, color)
-        AyaLed.set_pixel(Joystick.Right, LedPosition.Top, color)
+        #AyaLed.set_pixel(Joystick.Right, LedPosition.Right, color)
+        #AyaLed.set_pixel(Joystick.Right, LedPosition.Bottom, color)
+        #AyaLed.set_pixel(Joystick.Right, LedPosition.Left, color)
+        #AyaLed.set_pixel(Joystick.Right, LedPosition.Top, color)
 
     @staticmethod
     def set_pixel(js, led, color: Color):
@@ -53,7 +54,6 @@ class AyaLed():
     @staticmethod
     def enable_Control():
         AyaLed.ec_cmd(0x03, 0x02, 0xc0)
-while(True):
-    AyaLed.enable_Control()
-    AyaLed.set_all_pixels(Color(0,0,0))
-    time.sleep(0.1)
+
+AyaLed.enable_Control()
+AyaLed.set_all_pixels(Color(0,0,0))
