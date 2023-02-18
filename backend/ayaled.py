@@ -53,6 +53,7 @@ class AyaLed():
     @staticmethod
     def enable_Control():
         AyaLed.ec_cmd(0x03, 0x02, 0xc0)
-
-AyaLed.enable_Control()
-AyaLed.set_all_pixels(Color(0,0,0))
+while(True):
+    AyaLed.enable_Control()
+    AyaLed.set_all_pixels(Color(0,0,0))
+    time.sleep(0.1)
