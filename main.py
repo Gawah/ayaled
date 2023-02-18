@@ -9,6 +9,7 @@ try:
     HOMEBREW_PATH = get_homebrew_path(get_home_path(get_user()))   
     sys.path.append("{}/plugins/ayaled/backend".format(HOMEBREW_PATH))
     from config import logging
+    from ayaled import AyaLed,Color
     logging.info("ayaled main.py")
 except Exception as e:
     logging.error(e)
@@ -18,9 +19,11 @@ class Plugin:
         while True:
             await asyncio.sleep(3)
 
-    def set_lightOff(self, value: bool):
+    def set_ledOn(self, value: bool):
         try:
-            logging.info("set_lightOff")
+            AyaLed.enable_Control()
+            AyaLed.set_all_pixels(Color(value*255,value*255,value*255))
+            logging.info(f"set_ledOn:{value}")
         except Exception as e:
             logging.error(e)
             return False
