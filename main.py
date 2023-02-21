@@ -16,7 +16,6 @@ except Exception as e:
 
 class Plugin:
     async def _main(self):
-        AyaLed.enable_Control()
         while True:
             await asyncio.sleep(3)
 
