@@ -209,7 +209,6 @@
     }
 
     var ledon = true;
-    var intervalId;
     const Content = ({ serverAPI }) => {
         const [ledOn, setledOn] = React.useState(ledon);
         return (window.SP_REACT.createElement(PanelSection, { title: "\u8BBE\u7F6E" },
@@ -221,22 +220,6 @@
                     } }))));
     };
     var index = definePlugin((serverApi) => {
-        SteamClient.System.RegisterForOnSuspendRequest(async () => {
-            console.log("准备休眠");
-            if (intervalId == null) {
-                intervalId = setInterval(() => {
-                    serverApi.callPluginMethod("set_ledOn", { "value": ledon });
-                }, 100);
-            }
-        });
-        SteamClient.System.RegisterForOnResumeFromSuspend(async () => {
-            console.log("结束休眠");
-            if (intervalId != null) {
-                clearInterval(intervalId);
-                intervalId = null;
-            }
-            serverApi.callPluginMethod("set_ledOn", { "value": ledon });
-        });
         return {
             title: window.SP_REACT.createElement("div", { className: staticClasses.Title }, "ayaled"),
             content: window.SP_REACT.createElement(Content, { serverAPI: serverApi }),

@@ -1,4 +1,5 @@
 import portio
+import time
 EC_IBF_BIT = 0b10
 EC_OBF_BIT = 0b01
 EC_CMD_STATUS_REGISTER_PORT = 0x66
@@ -32,6 +33,7 @@ class EC:
 
         @staticmethod
         def GetStatus():
+            time.sleep(0.001)
             return inb(EC_CMD_STATUS_REGISTER_PORT)
 
         @staticmethod
