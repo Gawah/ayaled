@@ -7,7 +7,7 @@ import {
   ToggleField
 } from "decky-frontend-lib";
 import { VFC,useState,useEffect } from "react";
-import { FaShip } from "react-icons/fa";
+import { FaLightbulb } from "react-icons/fa";
 import { Backend } from "./backend";
 import { Setting } from "./settings";
 import { SlowSliderField } from "./SlowSliderField";
@@ -97,7 +97,7 @@ export default definePlugin((serverApi: ServerAPI) => {
   return {
     title: <div className={staticClasses.Title}>ayaled</div>,
     content: <Content/>,
-    icon: <FaShip />,
+    icon: <FaLightbulb/>,
     onDismount() {
       
     },
