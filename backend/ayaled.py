@@ -48,3 +48,4 @@ class AyaLed():
             EC.Write(0xb1, p1)
             EC.Write(0xb2, p2)
             EC.Write(0xbf, 0x10)
+            EC.Write(0xbf, 0xff)
