@@ -1496,9 +1496,13 @@
         static async init(serverAPI) {
             this.serverAPI = serverAPI;
         }
-        static applyLedOn(ledOn) {
-            console.log("Applying ledOn " + ledOn.toString());
-            Backend.serverAPI.callPluginMethod("set_ledOn", { "value": ledOn });
+        static applyLedOn(red, blue, green) {
+            console.log(`Applying ledOn ${red} ${green} ${blue}`);
+            Backend.serverAPI.callPluginMethod("set_ledOn", { "r": red, "g": green, "b": blue });
+        }
+        static applyLedOff() {
+            console.log("Applying ledOff ");
+            Backend.serverAPI.callPluginMethod("set_ledOn", { "value": false });
         }
         static applyRGB(red, blue, green) {
             console.log(`Setting RGB ${red} ${green} ${blue}`);
@@ -1511,11 +1515,10 @@
     }
     Backend.applySettings = () => {
         if (Setting.getLedOn()) {
-            Backend.applyLedOn(true);
-            Backend.applyRGB(Setting.getRed(), Setting.getGreen(), Setting.getBlue());
+            Backend.applyLedOn(Setting.getRed(), Setting.getGreen(), Setting.getBlue());
         }
         else {
-            Backend.applyLedOn(false);
+            Backend.applyLedOff();
         }
     };
 

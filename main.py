@@ -14,11 +14,6 @@ try:
 except Exception as e:
     logging.error(e)
 
-ledon=True
-red=255
-green=255
-blue=255
-
 class Plugin:
     async def _main(self):
         while True:
@@ -26,36 +21,16 @@ class Plugin:
 
     def set_ledOn(self, r: int, g: int, b: int):
         try:
-            global ledon
-            ledon=True
-            self.set_ledRGB(r,g,b)
-            logging.info(f"set_ledOn:{True}")
+            AyaLed.set_all_pixels(Color(r,g,b))
+            logging.info(f"set_ledOn:{r},{g},{b}")
         except Exception as e:
             logging.error(e)
             return False
     
     def set_ledOff(self):
         try:
-            global ledon
-            ledon=False
             AyaLed.set_all_pixels(Color(0,0,0))
-            logging.info(f"set_ledOn:{False}")
-        except Exception as e:
-            logging.error(e)
-            return False
-
-    def set_ledRGB(self, r: int, g: int, b: int):
-        try:
-            if ledon:
-                global red,green,blue
-                red=r
-                green=g
-                blue=b
-                AyaLed.set_all_pixels(Color(red,green,blue))
-                logging.info(f"set_ledOn:{red},{green},{blue}")
-            else:
-                AyaLed.set_all_pixels(Color(0,0,0))
-                logging.info(f"set_ledOn:{0},{0},{0}")
+            logging.info(f"set_ledoff")
         except Exception as e:
             logging.error(e)
             return False

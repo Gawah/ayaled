@@ -17,11 +17,6 @@ export class Backend {
   private static applyLedOff() {
     console.log("Applying ledOff ");
     Backend.serverAPI!.callPluginMethod("set_ledOn", {"value": false});
-}
-
-  private static applyRGB(red: number,blue: number, green: number){
-    console.log(`Setting RGB ${red} ${green} ${blue}`);
-    Backend.serverAPI!.callPluginMethod("set_ledRGB", {"r": red, "g": green, "b": blue });
   }
 
   public static throwSuspendEvt(){
