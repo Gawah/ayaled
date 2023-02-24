@@ -1504,10 +1504,6 @@
             console.log("Applying ledOff ");
             Backend.serverAPI.callPluginMethod("set_ledOn", { "value": false });
         }
-        static applyRGB(red, blue, green) {
-            console.log(`Setting RGB ${red} ${green} ${blue}`);
-            Backend.serverAPI.callPluginMethod("set_ledRGB", { "r": red, "g": green, "b": blue });
-        }
         static throwSuspendEvt() {
             console.log("throwSuspendEvt");
             this.serverAPI.callPluginMethod("receive_suspendEvent", {});
